@@ -1,8 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import Header from './header/Header';
+import guid from '../../helpers/uuid';
+import { setCartTokenAction } from '../../store/action/cartActions';
 
 const Layout = props => {
+  
+  const dispatch = useDispatch();
+  const addToken = token => dispatch( setCartTokenAction(token) )
+
+
+  useEffect(() => {
+    //consultar la api
+    const initToken = () => dispatch( addToken );
+    initToken();
+  }, [])
+
   return ( 
     <>
       <Header />

@@ -2,13 +2,12 @@ import {
     AGREGAR_PRODUCTO,
     AGREGAR_PRODUCTO_EXITO,
     AGREGAR_PRODUCTO_ERROR,
-    ELIMINAR_PRODUCTO_EXITO,
-    ELIMINAR_PRODUCTO_ERROR 
-  } from '../types/index'
+    SET_CART_TOKEN
+  } from '../types/cartTypes';
   
   //Cada reducer tiene su propio state
   const initialState = {
-    token: '700',
+    token: null,
     items: [],
     total_mxn: 0,
     total_usd: 0,
@@ -36,6 +35,11 @@ import {
           loading: false,
           error: action.payload
         }
+      case SET_CART_TOKEN:
+          return {
+            ...state,
+            token: action.payload
+          }
       default:
         return state;
     }

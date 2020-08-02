@@ -35,7 +35,7 @@ const ProductCard = ({product, addProduct, currency}) => {
         <div className="px-6 py-4">
           <button 
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full uppercase"
-            onClick={ () => addProduct({ id: product.id, model: modelSelected }) }
+            onClick={ () => addProduct({ id: product._id, model: modelSelected }) }
           >
             Agregar al carrito
           </button>
