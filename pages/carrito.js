@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../components/layout/Layout';
 import ProductCard from '../components/ui/productCard/ProductCard';
-import Alert from '../components/ui/alerts/AlertTopAccentBorder';
-import guid from '../helpers/uuid';
+import Alert from '../components/ui/alerts/AlertTopAccentBorder'
 
 //Actions de redux
 import { addProductToCart } from '../store/action/cartActions'
@@ -40,15 +39,7 @@ export default function Home() {
         { !error ? null :<Alert type="danger" message="Hubo un error" info={error} /> }
         <div className="px-8">
           <div className="flex -mx-2 md:px-8 flex-col md:flex-row">
-              {products.map((product, index) => (
-                <div key={index} className="w-full md:w-1/3 px-2">
-                  <ProductCard
-                    currency='mxn'
-                    product={product} 
-                    addProduct={handlerAddProduct}
-                  />
-                </div>
-              ))}
+            Hola soy carrito
           </div>
         </div>
       </Layout>
