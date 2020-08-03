@@ -31,15 +31,7 @@ const Layout = props => {
         currency={currency}
         changeCurrency={currencyHandler}
       />
-      <h1>Comprar autos</h1>
-      <nav>
-        <ul>
-          <li><Link href="/"><a>Inicio</a></Link></li>
-          <li><Link href="nosotros"><a>Nosotros</a></Link></li>
-          <li><Link href="/carrito"><a>Carrito</a></Link></li>
-          <li><Link href="/confirmacion"><a>Conf</a></Link></li>
-        </ul>
-      </nav>
+      <h1 className="text-blue-700 text-center font-semibold text-4xl my-8">Comprar autos</h1>
       <main>
           {props.children}
       </main>
