@@ -33,22 +33,20 @@ export default function Home() {
   }
 
   return (
-    <>
-      <Layout>
-        <div className="px-8">
-          <div className="flex -mx-2 md:px-8 flex-col md:flex-row">
-              {products.map((product, index) => (
-                <div key={index} className="w-full md:w-1/3 px-2">
-                  <ProductCard
-                    currency={currency}
-                    product={product} 
-                    addProduct={handlerAddProduct}
-                  />
-                </div>
-              ))}
-          </div>
+    <Layout>
+      <div class="px-4 md:px-8 lg:px-32">
+        <div class="flex flex-wrap -mx-2">
+          {products.map((product, index) => (
+            <div class="w-full md:w-6/12 lg:w-1/3 px-2 my-2">
+              <ProductCard
+                currency={currency}
+                product={product} 
+                addProduct={handlerAddProduct}
+              />
+            </div> 
+          ))}         
         </div>
-      </Layout>
-    </>
+      </div>
+    </Layout>
   )
 }
