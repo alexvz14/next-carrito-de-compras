@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 import { getCartDetailsAction } from '../store/action/cartDetailsActions';
 import { chekoutAction } from '../store/action/cartActions';
 import { setUserAction } from '../store/action/userActions';
+import { deleteItemCartAction } from '../store/action/cartDetailsActions';
 
 export default function Carrito() {
 
@@ -19,6 +20,7 @@ export default function Carrito() {
   const getCartDetails = () => dispatch( getCartDetailsAction() );
   const chekout = () => dispatch( chekoutAction() );
   const setUser = user => dispatch( setUserAction(user) )
+  const deletItemCart = item => dispatch(deleteItemCartAction(item))
 
   //Items resumen 
   const items = useSelector( state => state.cart.items);
@@ -73,8 +75,10 @@ export default function Carrito() {
     setUser(user);
   }
 
-
-  
+  //Eliminar elemento de carrit
+  const deleteItemHandler = item => {
+    deletItemCart(item)
+  }
 
   return (
     <>
@@ -94,6 +98,7 @@ export default function Carrito() {
                 key={index} 
                 product={product}
                 currency={currency}  
+                onDeleteClick={deleteItemHandler}
               /> 
             ))}
           </div>

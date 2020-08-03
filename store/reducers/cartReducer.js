@@ -10,7 +10,10 @@ import {
     CHEKOUT_EXITO,
     CHEKOUT_ERROR,
     CHEKOUT_CONFIRMACION,
-    CHEKOUT_CONFIRMACION_EXITO
+    CHEKOUT_CONFIRMACION_EXITO,
+    DELETE_ITEMCARRITO,
+    DELETE_ITEMCARRITO_EXITO,
+    DELETE_ITEMCARRITO_ERROR
   } from '../types/cartTypes';
   
   //Cada reducer tiene su propio state
@@ -29,7 +32,8 @@ import {
       case AGREGAR_PRODUCTO,
       OBTENER_DETALLES_CARRITO,
       CHEKOUT,
-      CHEKOUT_CONFIRMACION:
+      CHEKOUT_CONFIRMACION,
+      DELETE_ITEMCARRITO:
         return {
           ...state,
           loading: true,
@@ -41,7 +45,8 @@ import {
           loading: false,
         }
       case AGREGAR_PRODUCTO_ERROR,
-      OBTENER_DETALLES_CARRITO_ERROR:
+      OBTENER_DETALLES_CARRITO_ERROR,
+      DELETE_ITEMCARRITO_ERROR:
         return {
           ...state,
           loading: false,
@@ -74,6 +79,11 @@ import {
           ...state,
           loading: false,
           confirmation: action.payload
+        }
+      case DELETE_ITEMCARRITO_EXITO: 
+        return {
+          ...state,
+          loading: false
         }
       default:
         return state;

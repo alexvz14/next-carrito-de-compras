@@ -2,7 +2,21 @@ import React from 'react';
 import Price from '../price/Price';
 import Select from '../select/Select';
 
-const SummaryItem = ({product, min, currency, bordert , borderb }) => {
+const SummaryItem = ({product, min, currency, bordert , borderb, onDeleteClick }) => {
+
+  const deleteHandler = item => {
+    
+    if(!item)
+      return console.log('deleteHandler error item')
+
+    const id = item._id;
+
+    if(!onDeleteClick)
+      return console.log('deleteHandler item >>> ', item)
+    
+    onDeleteClick(id);  
+  }
+
   return (
     <div className={` w-full px-4 py-2  border-gray-400 ${bordert ? 'border-t' : null} ${borderb ? 'border-b' : null} `}>
       <div className="flex justify-between">
@@ -43,7 +57,7 @@ const SummaryItem = ({product, min, currency, bordert , borderb }) => {
       }
       { !min ? 
         <div className="flex justify-between">
-          <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <button type="button" onClick={ () => deleteHandler(product.product)} class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Eliminar
           </button> 
         </div> : 
