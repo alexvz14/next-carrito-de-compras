@@ -81,6 +81,8 @@ export default function Carrito() {
       <Layout>
       <div className="px-2">
       { items.length > 0 ? 
+        <>
+        <label className="text-xl my-4 mx-6 text-center"><Link href="/"><a className="text-blue-500 underline">Seguir comprando</a></Link></label>
         <div className="flex -mx-2 px-8">
           <div className="w-8/12 px-2 my-2">
             <div className=" border-gray-400 py-2">
@@ -109,6 +111,7 @@ export default function Carrito() {
             </div>
           </div>
         </div>
+        </>
         :
         
         <div className="flex -mx-2 px-8 py-16">
