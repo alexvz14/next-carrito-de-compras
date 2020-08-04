@@ -1,3 +1,8 @@
+## Introducción
+
+La rama principal de este repositorio es ` release/App_carrito_v1` <br>
+Por favor cambie a la rama princiapl `git checkout release/App_carrito_v1`
+
 ## Para ejecutar la aplicación Frontend
 
 Descargar paquetes y dependencias:
