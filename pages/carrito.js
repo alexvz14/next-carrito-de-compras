@@ -12,6 +12,7 @@ import { getCartDetailsAction } from '../store/action/cartDetailsActions';
 import { chekoutAction } from '../store/action/cartActions';
 import { setUserAction } from '../store/action/userActions';
 import { deleteItemCartAction } from '../store/action/cartDetailsActions';
+import { updateItemCartAction } from '../store/action/cartDetailsActions';
 
 export default function Carrito() {
 
@@ -21,6 +22,7 @@ export default function Carrito() {
   const chekout = () => dispatch( chekoutAction() );
   const setUser = user => dispatch( setUserAction(user) )
   const deletItemCart = item => dispatch(deleteItemCartAction(item))
+  const updateItemCart = item => dispatch(updateItemCartAction(item))
 
   //Items resumen 
   const items = useSelector( state => state.cart.items);
@@ -80,6 +82,16 @@ export default function Carrito() {
     deletItemCart(item)
   }
 
+  const ModelChangeHandler = item => {
+    const update = {
+      item: item.id,
+      model: item.value,
+      type: item.type
+    }
+
+    updateItemCart(update)
+  }
+
   return (
     <>
       <Layout>
@@ -99,6 +111,7 @@ export default function Carrito() {
                 product={product}
                 currency={currency}  
                 onDeleteClick={deleteItemHandler}
+                onModelHandler={ModelChangeHandler}
               /> 
             ))}
           </div>

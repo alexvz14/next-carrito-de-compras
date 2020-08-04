@@ -5,6 +5,9 @@ import {
     DELETE_ITEMCARRITO,
     DELETE_ITEMCARRITO_EXITO,
     DELETE_ITEMCARRITO_ERROR,
+    UPDATE_ITEMCARRITO,
+    UPDATE_ITEMCARRITO_EXITO,
+    UPDATE_ITEMCARRITO_ERROR
   } from '../types/cartTypes'
 import axiosClient from '../../config/axios'; 
 import Swal from 'sweetalert2';
@@ -70,6 +73,44 @@ export function deleteItemCartAction(item) {
   }
 }
 
+//Actualizar un producto del carrito
+export function updateItemCartAction(item) {
+  return async (dispatch, getState) => {
+    dispatch( updateItem() );
+    const token = getState().cart.token;
+    const itemToUpdate = {
+      token: token,
+      item: item.item,
+      model: item.model
+    }
+    try {
+      //Eliminar carrito
+      await axiosClient.post('/cart/update', itemToUpdate)
+
+      dispatch(updateItemSuccess());
+
+      Swal.fire({
+        title: 'Correcto',
+        text: 'Tu producto se ha actualizado del carrito',
+        icon: 'success',
+      })
+
+      //Dispath Acción detalle del carrito
+      dispatch(getCartDetailsAction());
+
+    } catch (error) {
+      dispatch( updateItemError(error.response.data) )
+      if(error.response.status !== 404){
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text : error.response.data
+        });
+      }
+    }
+  }
+}
+
 const getDetails = () => ({
   type: OBTENER_DETALLES_CARRITO
 });
@@ -97,6 +138,22 @@ const deleteItemSuccess = payload => ({
 
 //Si existe un error
 const deleteItemError = payload => ({
-  type: DELETE_ITEMCARRITO_EXITO,
+  type: DELETE_ITEMCARRITO_ERROR,
+  payload: payload
+});
+
+//Update item
+const updateItem = () => ({
+  type: UPDATE_ITEMCARRITO
+});
+
+//Si obtenemos los detalles del carrito
+const updateItemSuccess = payload => ({
+  type: UPDATE_ITEMCARRITO_EXITO,
+});
+
+//Si existe un error
+const updateItemError = payload => ({
+  type: UPDATE_ITEMCARRITO_ERROR,
   payload: payload
 });
