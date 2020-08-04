@@ -99,8 +99,8 @@ export default function Carrito() {
       { items.length > 0 ? 
         <>
         <label className="text-xl my-4 mx-6 text-center"><Link href="/"><a className="text-blue-500 underline">Seguir comprando</a></Link></label>
-        <div className="flex -mx-2 px-8">
-          <div className="w-8/12 px-2 my-2">
+        <div className="flex flex-col md:flex-row -mx-2 px-8">
+          <div className="w-full md:w-8/12 px-2 my-2">
             <div className=" border-gray-400 py-2">
               <h1>1.- Resumen de compra</h1>
             </div>
@@ -115,7 +115,7 @@ export default function Carrito() {
               /> 
             ))}
           </div>
-          <div className="w-4/12 px-2">
+          <div className="w-full md:w-4/12 px-2">
             <div className="border border-gray-400 rounded my-2 p-4">
             <h3>2.- Mis datos de contacto</h3>
               { user.name == '' && user.lastname == '' ? 

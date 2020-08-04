@@ -27,16 +27,16 @@ const Header = ({currency, changeCurrency }) => {
           <Cart />
         </div>
         <div className="w-full block flex-shrink-0 lg:flex lg:items-center lg:w-auto">
-          <div className="hidden md:block mx-2">
+          <div className="hidden lg:block mx-2">
             <Select 
-              className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-1 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="block hola appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-1 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               items={['mxn', 'usd']} 
               placeholder=''
               value={currency} 
               onChange={changeCurrency}
             />
           </div>
-          <div className="hidden md:block mx-2">
+          <div className="hidden lg:block mx-2">
            <Cart />
           </div>
         </div>
